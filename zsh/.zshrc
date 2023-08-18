@@ -6,8 +6,6 @@ export N_PREFIX=$HOME/.n
 export PATH=$N_PREFIX/bin:$PATH
 export PATH=~/.local/.npm-global/bin:$PATH
 
-
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -78,8 +76,6 @@ plugins=(git zsh-autosuggestions)
 
 
 source $ZSH/oh-my-zsh.sh
-
-[ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
 # User configuration
 
