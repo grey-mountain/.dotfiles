@@ -1,5 +1,3 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -99,6 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export XDG_CONFIG_HOME=$HOME/.config
+
+alias cr="cargo run"
+alias ..="cd .."
+
 addToPathFront() {
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$1:$PATH
@@ -109,4 +112,6 @@ addToPathFront $HOME/.n
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.local/.npm-global/bin
+addToPathFront $HOME/.tmuxifier/bin
 
+eval "$(tmuxifier init -)"
