@@ -102,6 +102,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 alias cr="cargo run"
 alias ..="cd .."
+alias tx="tmux-sessionizer"
 
 addToPathFront() {
     if [[ "$PATH" != *"$1"* ]]; then
