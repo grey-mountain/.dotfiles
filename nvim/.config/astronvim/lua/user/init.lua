@@ -1,6 +1,6 @@
 return {
   -- colorscheme = "melange",
-  colorscheme = "nordfox",
+  colorscheme = "astrotheme",
   lsp = {
     formatting = {
       filter = function(client)
