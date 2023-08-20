@@ -117,3 +117,6 @@ addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.tmuxifier/bin
 
 eval "$(tmuxifier init -)"
+(cat ~/.cache/wal/sequences &)
+
+# wal -R // add this to startup programms
