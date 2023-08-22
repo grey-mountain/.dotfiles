@@ -104,6 +104,8 @@ alias cr="cargo run"
 alias ..="cd .."
 alias tx="tmux-sessionizer"
 alias wp="wal -a 92 -i"
+alias gs="git status"
+alias gp="git add . && git commit -m \"message\" && git push" 
 
 addToPathFront() {
     if [[ "$PATH" != *"$1"* ]]; then
