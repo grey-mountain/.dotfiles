@@ -102,6 +102,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 alias cr="cargo run"
 alias ..="cd .."
+alias v="nvim"
 alias tx="tmux-sessionizer"
 alias wp="wal -a 92 -i"
 alias gs="git status"
