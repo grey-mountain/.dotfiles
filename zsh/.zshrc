@@ -104,6 +104,7 @@ export N_PREFIX=$HOME/.n
 export XDG_CONFIG_HOME=$HOME/.config
 
 alias cr="cargo run"
+alias cb="cargo run --bin"
 alias ..="cd .."
 alias v="nvim"
 alias tx="tmux-sessionizer"
