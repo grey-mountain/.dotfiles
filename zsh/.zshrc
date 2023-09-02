@@ -97,8 +97,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias kon="xinput set-int-prop 18 \"Device Enabled\" 8 1"
-alias koff="xinput set-int-prop 18 \"Device Enabled\" 8 0"
+alias kon="xinput enable \"AT Translated Set 2 keyboard\""
+alias koff="xinput disable \"AT Translated Set 2 keyboard\""
 
 export N_PREFIX=$HOME/.n
 export XDG_CONFIG_HOME=$HOME/.config
