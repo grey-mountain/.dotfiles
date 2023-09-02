@@ -119,6 +119,7 @@ addToPathFront() {
 }
 
 addToPathFront $HOME/.n
+addToPathFront $HOME/.n/bin/
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.local/.npm-global/bin
