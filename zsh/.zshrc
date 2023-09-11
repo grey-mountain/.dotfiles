@@ -97,9 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias kon="xinput enable \"AT Translated Set 2 keyboard\""
-alias koff="xinput disable \"AT Translated Set 2 keyboard\""
-
 export N_PREFIX=$HOME/.n
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -128,4 +125,8 @@ addToPathFront $HOME/.tmuxifier/bin
 eval "$(tmuxifier init -)"
 (cat ~/.cache/wal/sequences &)
 
-# wal -R // add this to startup programms
+# Some custom configs
+alias wpc="wpc ~/Desktop/lwalpapers/wallpapers/"
+alias kon="xinput enable \"AT Translated Set 2 keyboard\""
+alias koff="xinput disable \"AT Translated Set 2 keyboard\""
+
