@@ -127,8 +127,8 @@ eval "$(tmuxifier init -)"
 
 # Some custom configs
 alias wpc="wpc ~/Desktop/lwalpapers/wallpapers/"
-alias kon="xinput enable \"AT Translated Set 2 keyboard\""
-alias koff="xinput disable \"AT Translated Set 2 keyboard\""
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-alias rs="rails server"
+# alias kon="xinput enable \"AT Translated Set 2 keyboard\""
+# alias koff="xinput disable \"AT Translated Set 2 keyboard\""
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+# alias rs="rails server"
