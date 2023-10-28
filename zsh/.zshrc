@@ -107,6 +107,7 @@ alias v="nvim"
 alias tx="tmux-sessionizer"
 alias wp="wal -a 92 -i"
 alias gs="git status"
+alias gm="git commit -m"
 alias gp="git add . && git commit -m \"message\" && git push" 
 
 addToPathFront() {
@@ -132,3 +133,5 @@ alias wpc="wpc ~/Desktop/lwalpapers/wallpapers/"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
 # alias rs="rails server"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
