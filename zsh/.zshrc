@@ -135,3 +135,5 @@ alias wpc="wpc ~/Desktop/lwalpapers/wallpapers/"
 # alias rs="rails server"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+bindkey -s ^f "tmux-sessionizer\n"
