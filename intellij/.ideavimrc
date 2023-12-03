@@ -1,61 +1,301 @@
-let mapleader=" "
+" let mapleader=" "
 
-""" Plugins  --------------------------------
-set surround
-set multiple-cursors
-set commentary
-set argtextobj
-set easymotion
-set textobj-entire
-set ReplaceWithRegister
-set exchange
-" Trying the new syntax
-Plug 'machakann/vim-highlightedyank'
+" ------ Basic settings ------
 
-""" Plugin settings -------------------------
-let g:argtextobj_pairs="[:],(:),<:>"
+" set nocompatible                  " choose no compatibility with legacy vi
+" set expandtab "makes sure that spaces are used for indenting lines, even when you press the 'Tab' key.
+" set smartindent
+" set autoindent
+" set lazyredraw                    " make vim a little speedier
+" set wildmenu                      " turn on the wildmenu cuz everyone says to
+" set history=1000
+" set formatoptions+=j              " Delete comment charalter when joining commented lines
+" set sc                            " show commands as you type them
+" set ttyfast
+" set showcmd                       " display incomplete commands
+" set laststatus=2                  " Always display the status line
+" set autowrite                     " Automatically :write before running commands
+" set clipboard+=unnamed            " Allow to use system clipboard
+" set showmatch                     " Show matching brackets when text indicator is over them
+" set nostartofline                 " Prevent cursor from moving to beginning of line when switching buffers
+" set virtualedit=block             " To be able to select past EOL in visual block mode
+" set updatetime=1000               " Update time used to create swap file or other things
+" set nojoinspaces                  " No extra space when joining a line which ends with . ? !
+" set complete+=kspell              " Autocomplete with dictionary words when spell check is on
+" set diffopt+=vertical             " Always use vertical diffs
+" set autoread                      " have vim re-load files when they're changed outside of vim
+" set hidden
+"
+" set linebreak                     " And when Vim does wrap lines, have it break the lines on spaces and punctuation only (http://vim.wikia.com/wiki/Word_wrap_without_line_breaks)
+" set colorcolumn=+1
+" set number
+" set numberwidth=2
+" set scrolloff=5                   " Screen scrolls 5 lines in front of the cursor
+" set sidescrolloff=3
 
-map <C-n> <Plug>NextWholeOccurrence
+" Quicker window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
-""" Common settings -------------------------
-set showmode
-set so=5
-set incsearch
-set nu
+" Tab navigation
+nnoremap <tab> gt
+nnoremap <S-tab> gT
 
-""" Idea specific settings ------------------
-set ideajoin
-set ideastatusicon=gray
+" delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
-""" My Mappings -----------------------------
-map <leader>f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
+" replace currently selected text with default register without yanking it
+vnoremap <leader>p "_dP
 
-map <leader>d <Action>(Debug)
-map <leader>r <Action>(RenameElement)
-map <leader>c <Action>(Stop)
-map <leader>z <Action>(ToggleDistractionFreeMode)
+" Center screen when moving up and down
+nnoremap <S-u> <C-u>zz
+nnoremap <S-d> <C-d>zz
+vnoremap <C-u> <C-u>zz
+vnoremap <C-d> <C-d>zz
 
-map <leader>s <Action>(SelectInProjectView)
-map <leader>a <Action>(Annotate)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-map <S-Space> <Action>(GotoNextError)
+" Center screen when jumping to next match
+nnoremap n nzz
+nnoremap N Nzz
+vnoremap n nzz
+vnoremap N Nzz
 
-" Reformat the current line only
-map <leader>l V<Action>(ReformatCode)
+" Don't yank to default register when changing something
+nnoremap c "xc
+xnoremap c "xc
 
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>o <Action>(FileStructurePopup)
+"  Windows Actions
 
-map <leader>J Ji <ESC>
+map <leader>bh :action SplitHorizontally<CR>
+map <leader>bv :action SplitVertically<CR>
 
-" Just makes me nervous
-map H h
+" Turn off recording
+map q <Nop>
 
-" Toggle case and start typing. E.g. `<leader>iget`: `property` -> `getProperty`
-map <leader>i ~hi
-" Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
-vmap <leader>u d~h
+" ------ Search settings ------
+set ignorecase                    " Ignore case by default
+set smartcase                     " Make search case sensitive only if it contains uppercase letters
+set wrapscan                      " Search again from top when reached the bottom
+set nohlsearch                    " Don't highlight after search
+set incsearch                     " incremental searching
 
-" I think it's a better solution
-map U <C-R>
+" ------ Timeout settings ------
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" " ---------------------------------------------------------------------------------------------------------------------
+" " IDEA Actions {{{
+" " =====================================================================================================================
+"
+" " Generic IDE
+" map <A-a>    :action GotoAction<CR>
+" map <leader>f :action Forward<CR>
+" map <leader>b :action Back<CR>
+" map <leader>tt :action ShowSettings<CR>
+" "
+" "
+" " " File Operations
+" map <leader>s :action SaveAll<CR>
+" " Find
+" map / :action Find<CR>
+" " Preserve  ideavim search
+" map g/ /
+" map ,/ :action Replace<CR>
+" map <leader>n :action NextOccurence<CR>
+" map <leader>p :action PreviousOccurence<CR>
+" map <leader>kk :action CloseContent<CR>
+" map <leader><leader> :action VimFilePrevious<CR>
+"
+" map <Right> :action NextTab<CR>
+" map <Left> :action PreviousTab<CR>
+" " map <leader>l :action NextTab<CR>
+" " map <leader>h :action PreviousTab<CR>
+"
+" map <leader>ot :action ReopenClosedTab<CR>
+" map <leader>a :action $SelectAll<CR>
+" map  ,sfp :action ShowFilePath<CR>
+" map <leader>ncl :action NewClass<CR>
+" " map <leader>nfo :action NewDir<CR>
+" " map <leader>nfi :action NewFile<CR>
+" map <leader>np  :action NewProject<CR>
+" map <leader>nsb :action NewScratchBuffer<CR>
+" map <leader>nw :action OpenElementInNewWindow<CR>
+" map <leader>ca :action CloseAllEditors<CR>
+" map <leader>co :action CloseAllEditorsButActive<CR>
+" map <leader>cc :action EditorAddOrRemoveCaret<CR>
+" map <leader>ku :action EditorCloneCaretAbove<CR>
+" map <leader>kd :action EditorCloneCaretBelow<CR>
+" map <leader>fw :action FindWordAtCaret<CR>
+" map <leader>tc :action EditorToggleCase<CR>
+" map <leader>mo :action MoveEditorToOppositeTabGroup<CR>
+"
+" " " Code navigation
+"
+" map gc :action GotoClass<CR>
+" map gf :action GotoFile<CR>
+" map gs :action GotoSymbol<CR>
+" map gi :action GotoImplementation<CR>
+" map gd :action GotoDeclaration<CR>
+" map gu :action GotoSuperMethod<CR>
+" map fu :action FindUsages<CR>
+" " map fuf :action FindUsagesInFile<CR>
+" " map ,huu :action HighlightUsages<CR>
+" map ,huf :action HighlightUsagesInFile<CR>
+" map mu :action MethodUp<CR>
+" map md :action MethodDown<CR>
+" map ,qd :action QuickJavaDoc<CR>
+" map ,tb :action ToggleBookmark<CR>
+" map ,tbm :action ToggleBookmarkWithMnemonic<CR>
+" map ,0 :action ToggleBookmark0<CR>
+" map ,1 :action ToggleBookmark1<CR>
+" map ,2 :action ToggleBookmark2<CR>
+" map ,3 :action ToggleBookmark3<CR>
+" map ,4 :action ToggleBookmark4<CR>
+" map ,5 :action ToggleBookmark5<CR>
+" map ,6 :action ToggleBookmark6<CR>
+" map ,7 :action ToggleBookmark7<CR>
+" map ,8 :action ToggleBookmark8<CR>
+" map ,9 :action ToggleBookmark9<CR>
+" map ,sb :action ShowBookmarks<CR>
+" map ,gt :action GotoTest<CR>
+"
+" " Code
+"
+" map ,ff :action ReformatCode<CR>
+" map ,ac :action RearrangeCode<CR>
+" map ,fd :action ShowReformatFileDialog<CR>
+" map ,re :action RenameElement<CR>
+" map ,lt :action InsertLiveTemplate<CR>
+" map ,fs :action FileStructurePopup<CR>
+" map ,gg :action Generate<CR>
+" map ,sw :action SurroundWith<CR>
+" map ,sl :action SurroundWithLiveTemplate<CR>
+" map ,oi :action OptimizeImports<CR>
+" map ,tm :action GenerateTestMethod <CR>
+"
+"
+" "  Refactor
+"
+" map ,rq :action Refactorings.QuickListPopupAction<CR>
+" map ,re :action RenameElement<CR>
+" map ,rf :action RenameFile<CR>
+" map ,ce :action CopyElement<CR>
+" map ,rm :action Move<CR>
+" map ,cs :action ChangeSignature<CR>
+"
+" " Run / Debug
+"
+" map ,rr :action Run<CR>
+" map ,cr :action ChooseRunConfiguration<CR>
+" map ,dd :action Debug<CR>
+" map ,cd :action ChooseDebugConfiguration<CR>
+" " map ,rcl :action RunClass<CR>
+" map ,dcl :action DebugClass<CR>
+" map ,b :action ToggleLineBreakpoint<CR>
+" map ,vb :action ViewBreakpoints<CR>
+" map ,cc :action Compile<CR>
+" map ,cp :action CompileProject<CR>
+" map ,rc :action Debugger.ReloadFile<CR>
+"
+" " View
+"
+" map tdm :action ToggleDistractionFreeMode<CR>
+" map tfs :action ToggleFullScreen<CR>
+" map tpm :action TogglePresentationMode<CR>
+" map ,rcf :action RecentChangedFiles<CR>
+" map ,qcs :action QuickChangeScheme<CR>
+" map ,si :action SelectIn<CR>
+"
+" "  Windows Actions
+"
+" map <leader>wh :action SplitHorizontally<CR>
+" map <leader>wv :action SplitVertically<CR>
+" map <leader>q  :action HideAllWindows<CR>
+" map <leader>whs :action HideSideWindows<CR>
+" map <leader>wha  :action HideActiveWindow<CR>
+" map <leader>wl :action JumpToLastWindow<CR>
+" map <leader>x :action VimWindowClose<CR>
+" " map  mm :action MaximizeToolWindow<CR>
+" map <leader>pc :action CloseProject<CR>
+" map <leader>wjr :action ActivateJRebelToolWindow<CR>
+"
+" map <leader>wst :action ActivateStructureToolWindow<CR>
+" map <leader>was :action ActivateApplicationServersToolWindow<CR>
+" map <leader>wbv :action ActivateBeanValidationToolWindow<CR>
+" map <leader>wdi :action ActivateCDIToolWindow<CR>
+" map <leader>wcs :action ActivateCheckStyleToolWindow<CR>
+" map <leader>wdb :action ActivateDatabaseToolWindow<CR>
+" map <leader>wbg :action ActivateDebugToolWindow<CR>
+" map <leader>wel :action ActivateEventLogToolWindow<CR>
+" map <leader>wil :action ActivateImageLayersToolWindow<CR>
+" map <leader>wje :action ActivateJavaEnterpriseToolWindow<CR>
+" map <leader>wsf :action ActivateJSFToolWindow<CR>
+" map <leader>wmv :action ActivateMavenProjectsToolWindow<CR>
+" map <leader>wtt :action ActivateTerminalToolWindow<CR>
+" map <leader>git :action ActivateVersionControlToolWindow<CR>
+" map <leader>www :action MaximizeToolWindow<CR>
+"
+"
+" " Git
+"
+" " map ,gad :action Git.Add<CR>
+" " map ,gcl :action Git.Clone<CR>
+" " map ,gcr :action Git.Configure.Remotes<CR>
+" " map ,gnb :action Git.CreateNewBranch<CR>
+" " map ,gnt :action Git.CreateNewTag<CR>
+" " map ,gfe :action Git.Fetch<CR>
+" " map ,gin :action Git.Init<CR>
+" " map ,glo :action Git.Log<CR>
+" " map ,gme :action Git.Merge<CR>
+" " map ,gpl :action Git.Pull<CR>
+" " map ,grb :action Git.Rebase<CR>
+" " map ,gre :action Git.Reset<CR>
+" " map ,grc :action Git.ResolveConflicts<CR>
+" " map ,gst :action Git.Stash<CR>
+" " map ,gta :action Git.Tag<CR>
+" " map ,guc :action Git.Uncommit<CR>
+" " map ,gus :action Git.UnStash<CR>
+"
+" "  Github
+"
+" map ,ghcg :action Github.Create.Gist<CR>
+" map ,ghpr :action Github.Create.Pull.Request<CR>
+" map ,ghbr :action Github.Open.In.Browser<CR>
+"
+"
+" " AceJump
+"
+" " Press `f` to activate AceJump
+" map ff :action AceAction<CR>
+" " Press `F` to activate Target Mode
+" map ft :action AceTargetAction<CR>
+" " Press `g` to activate Line Mode
+" map fl :action AceLineAction<CR>
+"
+"
+" " Maven
+" map ,mec :action Maven.EditRunConfiguration<CR>
+"
+" "  TabShift
+"
+" map ,r :action TabShiftActions.StretchLeft<CR>
+" map ,h :action TabShiftActions.StretchLeft<CR>
+" map ,l :action TabShiftActions.StretchRight<CR>
+" map ,j :action TabShiftActions.StretchDown<CR>
+" map ,k :action TabShiftActions.StretchUp<CR>
+"
+" map ,mh :action TabShiftActions.MoveFocusLeft<CR>
+" map ,ml :action TabShiftActions.MoveFocusRight<CR>
+" map ,mj :action TabShiftActions.MoveFocusDown<CR>
+" map ,mk :action TabShiftActions.MoveFocusUp<CR>
+"
+" map ,sh :action TabShiftActions.ShiftLeft<CR>
+" map ,sl :action TabShiftActions.ShiftRight<CR>
+" map ,sj :action TabShiftActions.ShiftDown<CR>
+" map ,sk :action TabShiftActions.ShiftUp<CR>
+"
+"
+" "}}}
