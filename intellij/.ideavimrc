@@ -2,36 +2,36 @@
 
 " ------ Basic settings ------
 
-" set nocompatible                  " choose no compatibility with legacy vi
-" set expandtab "makes sure that spaces are used for indenting lines, even when you press the 'Tab' key.
-" set smartindent
-" set autoindent
-" set lazyredraw                    " make vim a little speedier
-" set wildmenu                      " turn on the wildmenu cuz everyone says to
-" set history=1000
-" set formatoptions+=j              " Delete comment charalter when joining commented lines
-" set sc                            " show commands as you type them
-" set ttyfast
-" set showcmd                       " display incomplete commands
-" set laststatus=2                  " Always display the status line
-" set autowrite                     " Automatically :write before running commands
-" set clipboard+=unnamed            " Allow to use system clipboard
-" set showmatch                     " Show matching brackets when text indicator is over them
-" set nostartofline                 " Prevent cursor from moving to beginning of line when switching buffers
-" set virtualedit=block             " To be able to select past EOL in visual block mode
-" set updatetime=1000               " Update time used to create swap file or other things
-" set nojoinspaces                  " No extra space when joining a line which ends with . ? !
-" set complete+=kspell              " Autocomplete with dictionary words when spell check is on
-" set diffopt+=vertical             " Always use vertical diffs
-" set autoread                      " have vim re-load files when they're changed outside of vim
-" set hidden
-"
-" set linebreak                     " And when Vim does wrap lines, have it break the lines on spaces and punctuation only (http://vim.wikia.com/wiki/Word_wrap_without_line_breaks)
-" set colorcolumn=+1
-" set number
-" set numberwidth=2
-" set scrolloff=5                   " Screen scrolls 5 lines in front of the cursor
-" set sidescrolloff=3
+set nocompatible                  " choose no compatibility with legacy vi
+set expandtab                     " makes sure that spaces are used for indenting lines, even when you press the 'Tab' key.
+set smartindent
+set autoindent
+set lazyredraw                    " make vim a little speedier
+set wildmenu                      " turn on the wildmenu cuz everyone says to
+set history=1000
+set formatoptions+=j              " Delete comment charalter when joining commented lines
+set sc                            " show commands as you type them
+set ttyfast
+set showcmd                       " display incomplete commands
+set laststatus=2                  " Always display the status line
+set autowrite                     " Automatically :write before running commands
+set clipboard+=unnamed            " Allow to use system clipboard
+set showmatch                     " Show matching brackets when text indicator is over them
+set nostartofline                 " Prevent cursor from moving to beginning of line when switching buffers
+set virtualedit=block             " To be able to select past EOL in visual block mode
+set updatetime=1000               " Update time used to create swap file or other things
+set nojoinspaces                  " No extra space when joining a line which ends with . ? !
+set complete+=kspell              " Autocomplete with dictionary words when spell check is on
+set diffopt+=vertical             " Always use vertical diffs
+set autoread                      " have vim re-load files when they're changed outside of vim
+set hidden
+
+set linebreak                     " And when Vim does wrap lines, have it break the lines on spaces and punctuation only (http://vim.wikia.com/wiki/Word_wrap_without_line_breaks)
+set colorcolumn=+1
+set relativenumber
+set numberwidth=2
+set scrolloff=0                   " Screen scrolls 5 lines in front of the cursor
+set sidescrolloff=3
 
 " Quicker window movement
 nnoremap <C-h> <C-w>h
@@ -299,3 +299,6 @@ set ttimeoutlen=10
 "
 "
 " "}}}
+
+" Show virtual space at file bottom - on
+" Use block caret - on
