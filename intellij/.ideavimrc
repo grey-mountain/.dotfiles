@@ -1,4 +1,18 @@
-" let mapleader=" "
+let mapleader=" "
+
+" ------ Basic settings ------
+
+" set surround
+" set multiple-cursors
+" set commentary
+" set argtextobj
+" set easymotion
+" set textobj-entire
+" set ReplaceWithRegister
+" set exchange
+set NERDTree
+set which-key
+set highlightedyank
 
 " ------ Basic settings ------
 
@@ -15,7 +29,7 @@ set ttyfast
 set showcmd                       " display incomplete commands
 set laststatus=2                  " Always display the status line
 set autowrite                     " Automatically :write before running commands
-set clipboard+=unnamed            " Allow to use system clipboard
+set clipboard+=unnamedplus            " Allow to use system clipboard
 set showmatch                     " Show matching brackets when text indicator is over them
 set nostartofline                 " Prevent cursor from moving to beginning of line when switching buffers
 set virtualedit=block             " To be able to select past EOL in visual block mode
@@ -27,10 +41,10 @@ set autoread                      " have vim re-load files when they're changed 
 set hidden
 
 set linebreak                     " And when Vim does wrap lines, have it break the lines on spaces and punctuation only (http://vim.wikia.com/wiki/Word_wrap_without_line_breaks)
-set colorcolumn=+1
+set colorcolumn=""
 set relativenumber
 set numberwidth=2
-set scrolloff=0                   " Screen scrolls 5 lines in front of the cursor
+set scrolloff=0
 set sidescrolloff=3
 
 " Quicker window movement
@@ -47,8 +61,10 @@ nnoremap <S-tab> gT
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
-" replace currently selected text with default register without yanking it
-vnoremap <leader>p "_dP
+" After block yank and paste, move cursor to the end of operated text and don't override register
+vnoremap y y`]
+vnoremap p "_dP`]
+nnoremap p p`]
 
 " Center screen when moving up and down
 nnoremap <S-u> <C-u>zz
@@ -86,10 +102,30 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
-" " ---------------------------------------------------------------------------------------------------------------------
-" " IDEA Actions {{{
-" " =====================================================================================================================
-"
+" ------ File settings ------
+map <leader>c :action CloseContent<CR>
+
+" ------ View settings ------
+map <leader>q :action ToggleDistractionFreeMode<CR>
+map <leader>vf :action ToggleFullScreen<CR>
+" map <leader>:action TogglePresentationMode<CR>
+" map tfm  :action RecentChangedFiles<CR>
+" map ,qcs :action QuickChangeScheme<CR>
+" map ,si :action SelectIn<CR>
+
+" ------ Yank Highlight settings ------
+let g:highlightedyank_highlight_duration = "100"
+let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
+
+" ------ NERDTree settings ------
+" nnoremap <leader>q :NERDTreeFocus<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
+let g:NERDTreeMapQuit = "<leader>e"
+
+" ------ Which-key settings ------
+set timeoutlen=5000
+
 " " Generic IDE
 " map <A-a>    :action GotoAction<CR>
 " map <leader>f :action Forward<CR>
@@ -106,7 +142,6 @@ set ttimeoutlen=10
 " map ,/ :action Replace<CR>
 " map <leader>n :action NextOccurence<CR>
 " map <leader>p :action PreviousOccurence<CR>
-" map <leader>kk :action CloseContent<CR>
 " map <leader><leader> :action VimFilePrevious<CR>
 "
 " map <Right> :action NextTab<CR>
@@ -164,13 +199,13 @@ set ttimeoutlen=10
 "
 " " Code
 "
-" map ,ff :action ReformatCode<CR>
+map ,ff :action ReformatCode<CR>
 " map ,ac :action RearrangeCode<CR>
 " map ,fd :action ShowReformatFileDialog<CR>
 " map ,re :action RenameElement<CR>
 " map ,lt :action InsertLiveTemplate<CR>
 " map ,fs :action FileStructurePopup<CR>
-" map ,gg :action Generate<CR>
+map ,gg :action Generate<CR>
 " map ,sw :action SurroundWith<CR>
 " map ,sl :action SurroundWithLiveTemplate<CR>
 " map ,oi :action OptimizeImports<CR>
@@ -200,14 +235,6 @@ set ttimeoutlen=10
 " map ,cp :action CompileProject<CR>
 " map ,rc :action Debugger.ReloadFile<CR>
 "
-" " View
-"
-" map tdm :action ToggleDistractionFreeMode<CR>
-" map tfs :action ToggleFullScreen<CR>
-" map tpm :action TogglePresentationMode<CR>
-" map ,rcf :action RecentChangedFiles<CR>
-" map ,qcs :action QuickChangeScheme<CR>
-" map ,si :action SelectIn<CR>
 "
 " "  Windows Actions
 "
@@ -300,5 +327,8 @@ set ttimeoutlen=10
 "
 " "}}}
 
+" Manual config
 " Show virtual space at file bottom - on
 " Use block caret - on
+" XCode dark
+" Show hard wrap and visual guides - off
