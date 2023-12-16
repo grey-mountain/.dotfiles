@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Yandex Music
+Icon=/home/grey-mountain/Documents/ym.svg
+Exec=electron /home/grey-mountain/Desktop/yandex-music-player &
+
