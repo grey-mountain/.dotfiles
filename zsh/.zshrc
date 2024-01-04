@@ -122,6 +122,7 @@ addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.tmuxifier/bin
+addToPathFront /opt/apache-maven-3.6.3/bin
 
 eval "$(tmuxifier init -)"
 (cat ~/.cache/wal/sequences &)
