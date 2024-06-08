@@ -124,6 +124,13 @@ addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.tmuxifier/bin
 addToPathFront /opt/apache-maven-3.6.3/bin
 
+fzf-and-run-widget() {
+  history | cut -c 8- |  fzf
+  zle accept-line
+}
+zle     -N   fzf-and-run-widget
+bindkey '^R' fzf-and-run-widget
+
 eval "$(tmuxifier init -)"
 (cat ~/.cache/wal/sequences &)
 
@@ -134,7 +141,7 @@ alias wpc="wpc ~/Desktop/lwalpapers/wallpapers/"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
 # alias rs="rails server"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 bindkey -s ^f "tmux-sessionizer\n"
