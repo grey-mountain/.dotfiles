@@ -1,15 +1,28 @@
 return {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-        ensure_installed = { "rust_analyzer" },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = { "rust_analyzer" },
+        },
+        keys = {
+            { "<leader>re", "<cmd>RustEnableInlayHints<CR>" },
+            { "<leader>rd", "<cmd>RustDisableInlayHints<CR>" },
+            { "<leader>rk", "<cmd>RustHoverAction<CR>" },
+            { "<leader>ra", "<cmd>RustCodeAction<CR>" },
+            { "<leader>rc", "<cmd>RustOpenCargo<CR>" },
+        },
+        enabled = true,
+        -- enabled = false,
     },
-    keys = {
-        { "<leader>re", "<cmd>RustEnableInlayHints<CR>" },
-        { "<leader>rd", "<cmd>RustDisableInlayHints<CR>" },
-        { "<leader>rk", "<cmd>RustHoverAction<CR>" },
-        { "<leader>ra", "<cmd>RustCodeAction<CR>" },
-        { "<leader>rc", "<cmd>RustOpenCargo<CR>" },
+    {
+        "neovim/nvim-lspconfig",
+        init_options = {
+            userLanguages = {
+                eelixir = "html-eex",
+                eruby = "erb",
+                rust = "html",
+            },
+        },
+        lazy = false
     },
-    enabled = true,
-    -- enabled = false,
 }
