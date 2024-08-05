@@ -1,7 +1,3 @@
-vim.o.guicursor = ""
-vim.o.cursorline = false
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
 
 local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
@@ -14,5 +10,12 @@ if not pcall(require, "lazy") then
   vim.fn.getchar()
   vim.cmd.quit()
 end
+
+-- TODO: FIX THOSE MFS
+-- local set = vim.opt
+-- set.tabstop = 4
+-- set.softtabstop = 4
+-- set.shiftwidth = 4
+-- set.guicursor = ""
 
 require "lazy_setup"
