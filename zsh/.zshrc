@@ -19,7 +19,7 @@ alias wp="wal -a 92 -i"
 alias gs="git status"
 alias gm="git commit -m"
 alias gp="git add . && git commit -m \"message\" && git push" 
-alias vcfg="cd ~/.config/astronvim/lua/ "
+alias vcfg="cd ~/.config/nvim/lua/ "
 
 addToPathFront() {
     if [[ "$PATH" != *"$1"* ]]; then

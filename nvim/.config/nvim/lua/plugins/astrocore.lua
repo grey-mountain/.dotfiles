@@ -5,7 +5,7 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<A-g>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+          ["<A-g>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle terminal" },
           -- Plugin Manager
           ["<leader>p"] = false,
           ["<leader>pi"] = false,
@@ -40,7 +40,7 @@ return {
           ["<leader>p"] = { '[["_dP]]' },
         },
         t = {
-          ["<A-g>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+          ["<A-g>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" }
         },
       },
     },
