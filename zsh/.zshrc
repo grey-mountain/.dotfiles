@@ -36,8 +36,9 @@ addToPathFront $HOME/.tmuxifier/bin
 # addToPathFront /opt/apache-maven-3.6.3/bin
 
 fzf-and-run-widget() {
-  history | cut -c 8- |  fzf
-  zle accept-line
+  local selection
+  selection=$(history | cut -c 8- |  fzf) || return
+  LBUFFER+="$selection"
 }
 zle     -N   fzf-and-run-widget
 bindkey '^R' fzf-and-run-widget
