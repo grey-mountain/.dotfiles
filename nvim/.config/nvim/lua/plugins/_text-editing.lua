@@ -24,4 +24,9 @@ return {
         lazy = false,
         enabled = false,
     }
+    {
+        "talha-akram/noctis.nvim",
+        lazy = false,
+    },
 }
+

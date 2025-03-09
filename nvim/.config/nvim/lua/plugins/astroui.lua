@@ -1,7 +1,13 @@
 return {
-  "AstroNvim/astroui",
-  ---@type AstroUIOpts
-  opts = {
-    colorscheme = "noctis",
+  {
+    "talha-akram/noctis.nvim",
+    lazy = false,
   },
+  {
+    "AstroNvim/astroui",
+    ---@type AstroUIOpts
+    opts = {
+      colorscheme = "noctis",
+    },
+  }
 }
